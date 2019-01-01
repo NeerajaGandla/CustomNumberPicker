@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--
+    names of the attribute should never have an upper case letter
+-->
+    <declare-styleable name="CounterView">
+        <attr name="minlimit" format="integer"/>
+        <attr name="maxlimit" format="integer"/>
+    </declare-styleable>
+</resources>
