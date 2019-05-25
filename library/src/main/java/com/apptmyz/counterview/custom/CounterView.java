@@ -46,7 +46,9 @@ public class CounterView extends LinearLayout implements View.OnClickListener {
         TypedArray ta = getContext().getResources().obtainAttributes(attrs,R.styleable.CounterView);
         Log.d("test", "init: " + ta.toString());
         mMinLimit = ta.getInteger(R.styleable.CounterView_minlimit,1);
-        mValue = mMinLimit;
+        if (mMinLimit != 1) {
+            mValue = mMinLimit;
+        }
         mMaxLimit = ta.getInteger(R.styleable.CounterView_maxlimit,(int)Double.POSITIVE_INFINITY);
         invalidate();
         ta.recycle();
@@ -108,5 +110,18 @@ public class CounterView extends LinearLayout implements View.OnClickListener {
 
     public void setCounterListener(CounterListener listener) {
         this.listener = listener;
+    }
+
+    public void setValue(int value) {
+        mValue = value;
+        valueTv.setText(value + "");
+    }
+
+    public int getValue() {
+        String value = valueTv.getText().toString().trim();
+        if (value != null && value.length() != 0)
+            return Integer.parseInt(value);
+        else
+            return 0;
     }
 }
